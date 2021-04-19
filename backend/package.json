@@ -1,0 +1,31 @@
+{
+  "name": "eluvio_challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "eluvio_fetch_util.js",
+  "dependencies": {
+    "node": "^15.14.0",
+    "node-fetch": "^2.6.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js",
+    "server:debug": "nodemon  --inspect app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xalcolm1/Eluvio-Challenge-Application.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xalcolm1/Eluvio-Challenge-Application/issues"
+  },
+  "homepage": "https://github.com/xalcolm1/Eluvio-Challenge-Application#readme"
+}
