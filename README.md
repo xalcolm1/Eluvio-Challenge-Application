@@ -5,6 +5,7 @@ To start the mock server
  
     ```npm run server```
     
-   your server should now be running on port 5000 and you can send a post request to api/pages with your id's as an array in the body
+  4. open the index.html file in your browser
+   you should now be able to input ids with the UI, you can add as many space separated ids as you want or add them one at a time.
    
-   or you can start a local server with the index.html file and input ids with the basic ui I built and see the pages open in a new tab.
+
