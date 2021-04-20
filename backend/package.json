@@ -4,10 +4,11 @@
   "description": "",
   "main": "eluvio_fetch_util.js",
   "dependencies": {
-    "node": "^15.14.0",
-    "node-fetch": "^2.6.1",
+    "btoa": "^1.2.1",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "node": "^15.14.0",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

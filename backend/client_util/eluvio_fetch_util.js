@@ -1,35 +1,77 @@
 
 const fetch = require('node-fetch');
-const key = require('../config/keys').API_KEY;
+const btoa = require('btoa');
 
 async function eluvioFetchAll(items) {
   
-    const seen = new Set();
+    const seen = {};
     let responses = [];
     let idx = 0; 
 
     while(idx < items.length){
-        //get the next 5 items
-        //fetch them all simultaniusly 
-        let nextIdx = 0
+        let alternatDist = items.length - idx
+        let distance =  alternatDist < 5 ? alternatDist : 5
 
-        for(let i = 0; i < items.length && i < 5; i++){
+        let fetch1
+        let fetch2
+        let fetch3
+        let fetch4
+        let fetch5
+
+        for(let i = 0; i < distance; i++){
             let id = items[idx + i]
 
-            if(seen.has(id)) continue;
-            seen.add(id);
+            if(id in seen){
+                continue;
+            }
+            seen[id] =  true;
 
-            let html = await fetch(`https://eluv.io/items/${id}`,{
-                headers: {'Authorization': base}
-            })
-            .then(html =>  responses.push(html.text()))
-            // .then(text => responses.push(text))
-            .catch(err => console.log(err))
-            nextIdx++ 
+            // let fetchSetup = fetch(`https://eluv.io/items/${id}`,{
+            //     headers: {'Authorization': btoa(id)}
+            // })
+
+            if(i === 0){
+                fetch1 = fetch(`https://eluv.io/items/${id}`,{
+                    headers: {'Authorization': btoa(id)}
+                })
+                .then(res => res.text())
+            } else if (i === 1) {
+                fetch2 = fetch(`https://eluv.io/items/${id}`,{
+                    headers: {'Authorization': btoa(id)}
+                })
+                .then(res => res.text())
+            } else if (i === 2) {
+                fetch3 = fetch(`https://eluv.io/items/${id}`,{
+                    headers: {'Authorization': btoa(id)}
+                })
+                .then(res => res.text())
+            } else if (i === 3) {
+                fetch4 = fetch(`https://eluv.io/items/${id}`,{
+                    headers: {'Authorization': btoa(id)}
+                })
+                .then(res => res.text())
+            } else if (i === 4) {
+                fetch5 = fetch(`https://eluv.io/items/${id}`,{
+                    headers: {'Authorization': btoa(id)}
+                })
+                .then(res => res.text())
+            }
+       
         }
-        idx += nextIdx
+
+        let promises = [fetch1, fetch2, fetch3, fetch4, fetch5];
+        promises = promises.filter(promise => promise);
+
+        let results = await Promise.all(promises)
+            .catch(err => responses.push(err))
+            idx += distance
+
+        results.forEach(data => {
+            responses.push(data)
+        })   
+
+        
     }
-    console.log(responses)
     return responses;
 }
 
