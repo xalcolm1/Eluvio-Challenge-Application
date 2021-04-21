@@ -2,8 +2,9 @@
 const fetch = require('node-fetch');
 const btoa = require('btoa');
 
+//take in an array of ids and return an array of responses
 async function eluvioFetchAll(items) {
-  
+    
     const seen = {};
     let responses = [];
     let idx = 0; 
@@ -21,14 +22,8 @@ async function eluvioFetchAll(items) {
         for(let i = 0; i < distance; i++){
             let id = items[idx + i]
 
-            if(id in seen){
-                continue;
-            }
+            if(id in seen) continue;
             seen[id] =  true;
-
-            // let fetchSetup = fetch(`https://eluv.io/items/${id}`,{
-            //     headers: {'Authorization': btoa(id)}
-            // })
 
             if(i === 0){
                 fetch1 = fetch(`https://eluv.io/items/${id}`,{
@@ -60,6 +55,7 @@ async function eluvioFetchAll(items) {
         }
 
         let promises = [fetch1, fetch2, fetch3, fetch4, fetch5];
+        //filter undefined
         promises = promises.filter(promise => promise);
 
         let results = await Promise.all(promises)
@@ -68,9 +64,7 @@ async function eluvioFetchAll(items) {
 
         results.forEach(data => {
             responses.push(data)
-        })   
-
-        
+        });
     }
     return responses;
 }

@@ -23,9 +23,6 @@ fetchPages.addEventListener('click', handleCollection)
 //clear nextId and clear input box
 function handleAddId(){
     if(nextId < 1) return false; 
-    //uncomment below to allow comma separation
-    // nextValue = nextId.split(', ').join('</li><li>');
-    // nextValue = nextId.split(',').join('</li><li>');
     nextId = nextId.split(' ')
     pageIds.push(...nextId)
     nextId = nextId.join('</li><li>');
@@ -37,14 +34,13 @@ function handleAddId(){
     newId.value = '';
 }
 
-//handle 
+//get pages
 function handleCollection() {
     collectiveIds.innerHTML =  '';
     getPagesByIds(pageIds)
         .then(html => {
             if(html){
                 html.forEach((page, idx) => {
-                    // let randomNumber = Math.floor((Math.random()*100)+1); 
                     window.open("","_blank",'PopUp').document.write(page);
                 })
             }

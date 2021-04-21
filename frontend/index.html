@@ -5,7 +5,6 @@
     <meta name="viewport"  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Eluvio Coding Challenge</title>
     <script src="fetch_pages.js" type="text/javascript" defer></script>
-    <!-- <script src="./eluvio_fetch_util.js"></script> -->
     <style>
 
         *{
@@ -14,7 +13,10 @@
             color: white;
 
         }
-        .center{
+        h6{
+            margin-top: 0;
+        }
+        .center-column{
             margin-top: 100px;
             display: flex;
             align-items: center;
@@ -25,26 +27,25 @@
             margin-bottom: 10px;
         }
         .input{
-            border: 1px solid #373a47;
+            margin-bottom: 10px;
+            border: 1px solid #464a5b;
             border-radius: 5px;
+            
         }
-        .red{
-            color: red;
-        }
+      
     </style>
 </head>
 <body>
-    <div class="center">
-        <h1>Search page by id</h1>
+    <div class="center-column">
+        <h1>Search pages by id</h1>
+
         <div>
-            <input type="text" id="new_id" class="input"/>
+            <input type="text" id="new_id" class="input" placeholder="add ids"/>
             <button id="add_id" class="input">+</button>
         </div>
         <button id="fetch_pages" class="input">Get These Pages</button>
 
-        <!-- <label for="collective_ids">ids to be queried</label> -->
         <ul id="collective_ids"></ul>
-
     </div>
 </body>
 </html>
